@@ -10,6 +10,7 @@ class Channel(BaseModel):
     icon = models.ImageField(upload_to='channel/', blank=True, null=True)
     desc = models.TextField()
     banner = models.ImageField(upload_to='channel_banner/', null=True, blank=True)
+    followers = models.ManyToManyField(User, related_name='followed_channels', blank=True)
 
     class Meta:
         verbose_name = 'Channel'
