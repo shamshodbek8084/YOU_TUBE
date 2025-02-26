@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 
 class Channel(BaseModel):
     name = models.CharField(max_length=255)
-    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='channel')
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='channel', null=True, blank=True)
     icon = models.ImageField(upload_to='channel/', blank=True, null=True)
     desc = models.TextField()
     banner = models.ImageField(upload_to='channel_banner/', null=True, blank=True)

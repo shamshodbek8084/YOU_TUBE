@@ -55,8 +55,8 @@ class Like(BaseModel):
         return f'{self.user} - {self.video}'
     
 class Comment(BaseModel):
-    video = models.ForeignKey(Video, on_delete=models.CASCADE, verbose_name='video', related_name='likes')
-    user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='user', related_name='likes')
+    video = models.ForeignKey(Video, on_delete=models.CASCADE, verbose_name='video', related_name='comment')
+    user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='user', related_name='comment')
     text = models.TextField(verbose_name='comment')
 
     class Meta:
@@ -79,8 +79,8 @@ class CommentLike(BaseModel):
         return f'{self.user} - {self.comment}'
     
 class CommentComment(BaseModel):
-    comment = models.ForeignKey(Comment, on_delete=models.CASCADE, verbose_name='comment', related_name='comment_likes')
-    user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='user', related_name='comment_likes')
+    comment = models.ForeignKey(Comment, on_delete=models.CASCADE, verbose_name='comment', related_name='comment_comment')
+    user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='user', related_name='comment_comment')
     text = models.TextField(verbose_name='comment')
 
     class Meta:
