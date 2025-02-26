@@ -17,10 +17,13 @@ class Category(BaseModel):
     
 class Video(BaseModel):
     title = models.CharField(max_length=255, verbose_name='title')
-    description = models.TextField(verbose_name='description')
+    description = models.TextField(verbose_name='description', null=True, blank=True)
     photo = models.ImageField(upload_to='videos', verbose_name='photo')
     file = models.FileField(upload_to='videos/', verbose_name='file')
-    author = models.ForeignKey(Channel, on_delete=models.CASCADE, verbose_name='author', related_name='channel_videos')
+    author = models.ForeignKey(Channel, on_delete=models.CASCADE, 
+                               verbose_name='author', 
+                               related_name='channel_videos',
+                               null=True, blank=True)
     category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True, blank=True, 
                                  verbose_name='category', related_name='category_videos')
 
