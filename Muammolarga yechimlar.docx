@@ -1,0 +1,12 @@
+Parol esdan chiqdi, nima qilsak uni tiklay, o'zgratira olamiz:
+Yechim: terminalga shellga kirish orqali->
+
+python manage.py shell
+
+>>> from django.contrib.auth.models import User
+>>> user = User.objects.get(username="admin")
+>>> user.password
+>>> user.password = "123"
+>>> user.set_password("123")
+>>> user.save()
+>>> exit()

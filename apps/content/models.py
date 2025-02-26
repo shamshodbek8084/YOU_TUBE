@@ -89,3 +89,11 @@ class CommentComment(BaseModel):
 
     def __str__(self):
         return f'{self.user} - {self.comment}'
+
+class Playlist(BaseModel):
+    author = models.ForeignKey(User, on_delete=models.CASCADE,
+                               verbose_name='author',
+                               related_name='user_playlists')
+    videos = models.ManyToManyField(Video, verbose_name='videos',
+                                    related_name='video_playlists')
+    title = models.CharField(max_length=256)
