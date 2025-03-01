@@ -100,3 +100,5 @@ class Playlist(BaseModel):
     videos = models.ManyToManyField(Video, verbose_name='videos',
                                     related_name='video_playlists')
     title = models.CharField(max_length=256)
+
+

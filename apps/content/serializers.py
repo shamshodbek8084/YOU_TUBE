@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Video
+from .models import Video, Comment, Playlist
 from apps.accounts.serializers import ChannelSerializer
 
 
@@ -13,3 +13,20 @@ class VideoSerializer(serializers.ModelSerializer):
     def get_channel_name(self, obj):
         return ChannelSerializer(instance=obj.author,
                                  context = {"request" : self.context.get("request")}).data
+    
+class CommentSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Comment
+        fields = ['id', 'video', 'user', 'text']
+
+class CommentCommentSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Comment
+        fields = ['id', 'comment', 'user', 'text']
+
+class PlaylistSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Playlist
+        fields = ['author', 'videos', 'title']
+    
+
